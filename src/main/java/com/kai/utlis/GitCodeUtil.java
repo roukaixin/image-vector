@@ -56,7 +56,7 @@ public class GitCodeUtil {
         String response = httpPost(map, url);
         String path = objectMapper.readTree(response).get("file_path").textValue();
         String branch = objectMapper.readTree(response).get("branch").textValue();
-        log.info("创建新文件成功。返回结果为：",response);
+        log.info("创建新文件成功。返回结果为：{}",response);
         return "/" + branch +"/" + path;
     }
 
@@ -84,7 +84,7 @@ public class GitCodeUtil {
         map.put("branch", gitCode.getBranch());
         map.put("commit_message", commitMessage);
         String response = httpDelete(map, url);
-        log.info("删除成功。返回结果为：",response);
+        log.info("删除成功。返回结果为：{}",response);
     }
 
     /**
@@ -126,7 +126,7 @@ public class GitCodeUtil {
         actions.add(action);
         map.put("actions",actions);
         String response = httpPost(map, url);
-        log.info("提交成功。返回结果为：",response);
+        log.info("提交成功。返回结果为：{}",response);
         return "/" + gitCode.getBranch() +"/" + filePath;
     }
 
