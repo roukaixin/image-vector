@@ -1,0 +1,18 @@
+server:
+  port: 8090
+
+oss:
+  gitee:
+    enabled: true
+    access-token: b440dd1a3bcd9bbdebe46ac73858b294
+    owner: rouxin
+    repo: image_vector
+  gitcode:
+    enable: true
+    private-token: yvAxKBGZ_sQaWixyFDQz
+    id: 255523
+    branch: master
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
