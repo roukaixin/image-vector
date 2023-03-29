@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kai.domain.GitCode;
 import com.kai.enums.ActionEnum;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,7 @@ import java.util.Map;
  */
 @Component
 @ConditionalOnBean(GitCode.class)
+@Slf4j
 public class GitCodeUtil {
 
     private final GitCode gitCode;
@@ -43,22 +45,18 @@ public class GitCodeUtil {
      */
     @SneakyThrows
     public String createNewFile(String filePath, String content, String commitMessage){
-        String url = GITCODEHOST + "/projects/" + gitCode.getId() + "/repository/files/" + filePath;
-        Map<String, String> map = new HashMap<>();
+        String url = getUrl(filePath);
+        Map<String, Object> map = new HashMap<>();
         map.put("branch",gitCode.getBranch());
         map.put("content",content);
         map.put("commit_message",commitMessage);
         // encoding 默认是 text
         map.put("encoding","base64");
         ObjectMapper objectMapper = new ObjectMapper();
-        String body = objectMapper.writeValueAsString(map);
-        String response = HttpRequest
-                .post(url)
-                .header("PRIVATE-TOKEN", gitCode.getPrivateToken())
-                .body(body)
-                .execute().body();
+        String response = httpPost(map, url);
         String path = objectMapper.readTree(response).get("file_path").textValue();
         String branch = objectMapper.readTree(response).get("branch").textValue();
+        log.info("创建新文件成功。返回结果为：",response);
         return "/" + branch +"/" + path;
     }
 
@@ -81,17 +79,12 @@ public class GitCodeUtil {
      */
     @SneakyThrows
     public void deleteExistingFile(String path, String commitMessage){
-        String encodePath = URLEncoder.encode(path, "UTF-8");
-        String url = GITCODEHOST + "/projects/" + gitCode.getId() + "/repository/files/" + encodePath;
+        String url = getUrl(path);
         Map<String, String> map = new HashMap<>();
         map.put("branch", gitCode.getBranch());
         map.put("commit_message", commitMessage);
-        String body = new ObjectMapper().writeValueAsString(map);
-        String response = HttpRequest
-                .delete(url)
-                .header("PRIVATE-TOKEN", gitCode.getPrivateToken())
-                .body(body)
-                .execute().body();
+        String response = httpDelete(map, url);
+        log.info("删除成功。返回结果为：",response);
     }
 
     /**
@@ -132,13 +125,8 @@ public class GitCodeUtil {
         }
         actions.add(action);
         map.put("actions",actions);
-        ObjectMapper objectMapper = new ObjectMapper();
-        String body = objectMapper.writeValueAsString(map);
-        String response = HttpRequest
-                .post(url)
-                .header("PRIVATE-TOKEN", gitCode.getPrivateToken())
-                .body(body)
-                .execute().body();
+        String response = httpPost(map, url);
+        log.info("提交成功。返回结果为：",response);
         return "/" + gitCode.getBranch() +"/" + filePath;
     }
 
@@ -150,6 +138,34 @@ public class GitCodeUtil {
      */
     public String commitActions(ActionEnum actionEnum, String filePath, String content, String previousPath){
         return this.commitActions(actionEnum, filePath, content,"api 上传一张图片", previousPath);
+    }
+
+
+    @SneakyThrows
+    private String httpPost(Map<String,Object> map, String url){
+        ObjectMapper objectMapper = new ObjectMapper();
+        String body = objectMapper.writeValueAsString(map);
+        return HttpRequest
+                .post(url)
+                .header("PRIVATE-TOKEN", gitCode.getPrivateToken())
+                .body(body)
+                .execute().body();
+    }
+
+    @SneakyThrows
+    private String httpDelete(Map<String,String> map, String url){
+        String body = new ObjectMapper().writeValueAsString(map);
+        return HttpRequest
+                .delete(url)
+                .header("PRIVATE-TOKEN", gitCode.getPrivateToken())
+                .body(body)
+                .execute().body();
+    }
+
+    @SneakyThrows
+    private String getUrl(String path){
+        String encodePath = URLEncoder.encode(path, "UTF-8");
+        return GITCODEHOST + "/projects/" + gitCode.getId() + "/repository/files/" + encodePath;
     }
 
 

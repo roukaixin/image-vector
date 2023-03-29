@@ -1,16 +1,13 @@
 package com.kai.controller;
 
-import cn.hutool.core.codec.Base64;
-import com.kai.domain.GitCode;
+import com.kai.common.R;
 import com.kai.service.GitCodeService;
-import com.kai.utlis.GitCodeUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.InputStream;
 import java.util.Map;
 
 /**
@@ -33,19 +30,19 @@ public class GitCodeController {
 
     @SneakyThrows
     @PostMapping
-    public String createNewFile(MultipartFile file){
+    public R<String> createNewFile(MultipartFile file){
         return gitCodeService.createNewFile(file);
     }
 
     @SneakyThrows
     @DeleteMapping
-    public void deleteExistingFile(@RequestBody Map<String,String> map){
-        gitCodeService.deleteExistingFile(map);
+    public R<Object> deleteExistingFile(@RequestBody Map<String,String> map){
+        return gitCodeService.deleteExistingFile(map);
     }
 
     @SneakyThrows
     @PostMapping("/commitActions")
-    public String commitActions(MultipartFile file){
+    public R<String> commitActions(MultipartFile file){
         return gitCodeService.commitActions(file);
     }
 }
