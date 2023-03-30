@@ -1,18 +1,21 @@
 server:
   port: 8090
 
+
 oss:
   gitee:
     enabled: true
-    access-token: b440dd1a3bcd9bbdebe46ac73858b294
+    access-token: ENC(e7w7coXyohDyI36gMQFUU0z/2x2J3k8mV3HhfrQEkLYUCE9CfH7sSU+u/bLq9mNR+7alvo8MZk3K9WvNW7qVT3ecMz1Mo9wpdOJ6NzSzbfQ=)
     owner: rouxin
     repo: image_vector
   gitcode:
     enable: true
-    private-token: yvAxKBGZ_sQaWixyFDQz
+    private-token: ENC(j5pUI1Nk8JoqcA+REpcPFy0DsofOV6WxHxUvUkWD4sG5KKKx6jIobpTudcevxGjRGa3gZ3SjSbP8Bj+rhX6usA==)
     id: 255523
     branch: master
 spring:
   servlet:
     multipart:
       max-file-size: 5MB
+  profiles:
+    active: pro # 激活那个环境
