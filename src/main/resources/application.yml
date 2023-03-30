@@ -13,6 +13,12 @@ oss:
     private-token: ENC(j5pUI1Nk8JoqcA+REpcPFy0DsofOV6WxHxUvUkWD4sG5KKKx6jIobpTudcevxGjRGa3gZ3SjSbP8Bj+rhX6usA==)
     id: 255523
     branch: master
+  github:
+    enable: true
+    authorization: ENC(x0fyWIFklRbVGk4wntIMKEof6b28IOcl/DaDvW+xcRr8cV7w8SbE9N/uG6GpZzt2HZdcfqotUXe8+gTt5o6Ib060EVrjD9eagWBRW6QXxJA=)
+    owner: roukaixin
+    repo: image_vector
+    branch: main
 spring:
   servlet:
     multipart:
