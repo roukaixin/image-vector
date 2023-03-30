@@ -15,7 +15,7 @@ public interface GitCodeService {
     R<String> createNewFile(MultipartFile file);
 
     /**
-     * 删除文件
+     * 删除文件 （只能删除文件）
      * @param map 文件路径
      */
     R<Object> deleteExistingFile(Map<String, String> map);
@@ -24,7 +24,14 @@ public interface GitCodeService {
     /**
      * 创建新文件（可以创建目录）
      * @param file 文件
-     * @return String
+     * @return R
      */
-    R<String> commitActions(MultipartFile file);
+    R<String> create(MultipartFile file);
+
+    /**
+     * 删除文件
+     * @param path 文件路径
+     * @return R
+     */
+    R<String> delete(Map<String, String> path);
 }

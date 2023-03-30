@@ -47,11 +47,17 @@ public class GitCodeServiceImpl implements GitCodeService {
 
     @SneakyThrows
     @Override
-    public R<String> commitActions(MultipartFile file) {
+    public R<String> create(MultipartFile file) {
         String content = Base64.encode(file.getInputStream());
         String filename = file.getOriginalFilename();
         String pathUrl = gitCodeUtil.commitActions(ActionEnum.CREATE, getPath(filename), content,null);
         return R.ok("https://gitcode.net/weixin_45300702/image_vector/-/raw/" + pathUrl);
+    }
+
+    @Override
+    public R<String> delete(Map<String, String> path) {
+        String s = gitCodeUtil.commitActions(ActionEnum.DELETE, path.get("path"), null, "删除一个图片", null);
+        return R.ok(s);
     }
 
 

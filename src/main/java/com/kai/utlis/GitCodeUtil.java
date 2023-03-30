@@ -127,7 +127,7 @@ public class GitCodeUtil {
         map.put("actions",actions);
         String response = httpPost(map, url);
         log.info("提交成功。返回结果为：{}",response);
-        return "/" + gitCode.getBranch() +"/" + filePath;
+        return ActionEnum.DELETE.equals(actionEnum) ? response : "/" + gitCode.getBranch() +"/" + filePath;
     }
 
     /**

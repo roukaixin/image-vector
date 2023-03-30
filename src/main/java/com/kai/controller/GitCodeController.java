@@ -41,8 +41,14 @@ public class GitCodeController {
     }
 
     @SneakyThrows
-    @PostMapping("/commitActions")
-    public R<String> commitActions(MultipartFile file){
-        return gitCodeService.commitActions(file);
+    @PostMapping("/create")
+    public R<String> create(MultipartFile file){
+        return gitCodeService.create(file);
+    }
+
+    @SneakyThrows
+    @PostMapping("/delete")
+    public R<String> delete(@RequestBody Map<String,String> path){
+        return gitCodeService.delete(path);
     }
 }
