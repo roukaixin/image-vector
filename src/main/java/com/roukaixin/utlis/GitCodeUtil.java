@@ -1,9 +1,9 @@
-package com.kai.utlis;
+package com.roukaixin.utlis;
 
 import cn.hutool.http.HttpRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kai.domain.GitCode;
-import com.kai.enums.ActionEnum;
+import com.roukaixin.domain.GitCode;
+import com.roukaixin.enums.ActionEnum;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

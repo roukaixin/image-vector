@@ -1,15 +1,13 @@
-package com.kai.utlis;
+package com.roukaixin.utlis;
 
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.http.HttpUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kai.domain.Gitee;
+import com.roukaixin.domain.Gitee;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 

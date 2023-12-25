@@ -1,9 +1,9 @@
-package com.kai.utlis;
+package com.roukaixin.utlis;
 
 import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson2.JSON;
-import com.kai.domain.GitHub;
-import com.kai.enums.ActionEnum;
+import com.roukaixin.domain.GitHub;
+import com.roukaixin.enums.ActionEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Component;

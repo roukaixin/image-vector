@@ -1,4 +1,4 @@
-package com.kai.utlis;
+package com.roukaixin.utlis;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.IdUtil;

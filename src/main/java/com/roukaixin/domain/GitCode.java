@@ -1,4 +1,4 @@
-package com.kai.domain;
+package com.roukaixin.domain;
 
 import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

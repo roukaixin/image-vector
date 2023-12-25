@@ -1,4 +1,4 @@
-package com.kai;
+package com.roukaixin;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.StringEncryptor;

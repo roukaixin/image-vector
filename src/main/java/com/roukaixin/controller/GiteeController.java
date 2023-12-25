@@ -1,6 +1,6 @@
-package com.kai.controller;
+package com.roukaixin.controller;
 
-import com.kai.service.GiteeService;
+import com.roukaixin.service.GiteeService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

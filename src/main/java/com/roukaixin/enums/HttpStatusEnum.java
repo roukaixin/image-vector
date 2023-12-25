@@ -1,4 +1,4 @@
-package com.kai.enums;
+package com.roukaixin.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

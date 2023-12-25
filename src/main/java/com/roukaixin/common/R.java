@@ -1,6 +1,6 @@
-package com.kai.common;
+package com.roukaixin.common;
 
-import com.kai.enums.HttpStatusEnum;
+import com.roukaixin.enums.HttpStatusEnum;
 import lombok.*;
 import lombok.experimental.Accessors;
 

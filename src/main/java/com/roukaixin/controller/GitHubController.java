@@ -1,7 +1,7 @@
-package com.kai.controller;
+package com.roukaixin.controller;
 
-import com.kai.common.R;
-import com.kai.service.GitHubService;
+import com.roukaixin.common.R;
+import com.roukaixin.service.GitHubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

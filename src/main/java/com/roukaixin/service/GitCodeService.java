@@ -1,6 +1,6 @@
-package com.kai.service;
+package com.roukaixin.service;
 
-import com.kai.common.R;
+import com.roukaixin.common.R;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
