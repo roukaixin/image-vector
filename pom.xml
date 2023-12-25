@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.10</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <groupId>com.kai</groupId>
@@ -18,6 +18,9 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <hutool.version>5.2.3</hutool.version>
+        <jasypt.spring.boot.version>3.0.5</jasypt.spring.boot.version>
+        <fastjson2.version>2.0.26</fastjson2.version>
     </properties>
 
     <dependencies>
@@ -26,7 +29,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.2.3</version>
+            <version>${hutool.version}</version>
         </dependency>
 
         <!-- web -->
@@ -60,14 +63,14 @@
         <dependency>
             <groupId>com.github.ulisesbocchio</groupId>
             <artifactId>jasypt-spring-boot-starter</artifactId>
-            <version>3.0.5</version>
+            <version>${jasypt.spring.boot.version}</version>
         </dependency>
 
         <!-- fastjson2 -->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-            <version>2.0.26</version>
+            <version>${fastjson2.version}</version>
         </dependency>
 
 
