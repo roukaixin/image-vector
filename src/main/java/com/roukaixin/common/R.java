@@ -4,6 +4,12 @@ import com.roukaixin.enums.HttpStatusEnum;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+/**
+ * 统一返回结果类
+ *
+ * @author 不北咪
+ * @date 2023/12/25 下午9:39
+ */
 @Setter
 @Getter
 @NoArgsConstructor
