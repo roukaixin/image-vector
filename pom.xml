@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.10</version>
+        <version>3.2.1</version>
         <relativePath/>
     </parent>
 
@@ -18,7 +18,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <hutool.version>5.2.3</hutool.version>
+        <hutool.version>5.8.24</hutool.version>
         <jasypt.spring.boot.version>3.0.5</jasypt.spring.boot.version>
         <fastjson2.version>2.0.26</fastjson2.version>
     </properties>
