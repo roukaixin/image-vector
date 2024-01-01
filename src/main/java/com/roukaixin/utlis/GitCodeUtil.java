@@ -29,7 +29,7 @@ public class GitCodeUtil {
 
     private final GitCode gitCode;
 
-    private String GITCODEHOST = "https://gitcode.net/api/v4";
+    private String GITCODE_HOST = "https://gitcode.net/api/v4";
 
     @Autowired
     public GitCodeUtil(GitCode gitCode) {
@@ -46,7 +46,7 @@ public class GitCodeUtil {
     @SneakyThrows
     public String createNewFile(String filePath, String content, String commitMessage){
         String url = getUrl(filePath);
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(16);
         map.put("branch",gitCode.getBranch());
         map.put("content",content);
         map.put("commit_message",commitMessage);
@@ -107,7 +107,7 @@ public class GitCodeUtil {
      */
     @SneakyThrows
     public String commitActions(ActionEnum actionEnum, String filePath, String content, String commitMessage, String previousPath){
-        String url = GITCODEHOST + "/projects/" + gitCode.getId() + "/repository/commits";
+        String url = GITCODE_HOST + "/projects/" + gitCode.getId() + "/repository/commits";
         Map<String, Object> map = new HashMap<>();
         map.put("branch",gitCode.getBranch());
         map.put("commit_message",commitMessage);
@@ -165,7 +165,7 @@ public class GitCodeUtil {
     @SneakyThrows
     private String getUrl(String path){
         String encodePath = URLEncoder.encode(path, "UTF-8");
-        return GITCODEHOST + "/projects/" + gitCode.getId() + "/repository/files/" + encodePath;
+        return GITCODE_HOST + "/projects/" + gitCode.getId() + "/repository/files/" + encodePath;
     }
 
 
